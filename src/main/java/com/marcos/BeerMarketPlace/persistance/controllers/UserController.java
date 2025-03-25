@@ -23,12 +23,6 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @GetMapping
-    public List<User> list(){
-        return userService.findAll();
-
-    }
-
     @GetMapping("/{username}/{password}")
     public ResponseEntity<?> verifyLogIn(@PathVariable String username, @PathVariable String password) {
         Long logIn = userService.verifyLogIn(username, password);
@@ -38,7 +32,6 @@ public class UserController {
         }
         return ResponseEntity.notFound().build();
     }
-
 
     @GetMapping("/{id}")
     public ResponseEntity<?> show(@PathVariable Long id){

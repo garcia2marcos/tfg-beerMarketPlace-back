@@ -11,9 +11,6 @@ import java.util.List;
 @Repository
 public interface UserRepository extends JpaRepository<User ,Long> {
 
-    @Query(value = "select * from beers",nativeQuery = true)
-    List<Product> findProducts();
-
     @Query(value = "select * from users where username=:username && password=:password",nativeQuery = true)
     Long verifyLogIn(String username, String password);
 
